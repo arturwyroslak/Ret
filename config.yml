@@ -1,0 +1,35 @@
+version: 2.1
+
+jobs:
+  deploy_retool:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: Install Docker
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+      - run:
+          name: Deploy Retool Locally
+          command: |
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/tryretool/retool-onpremise/ssop/deploy-retool)"
+      - run:
+          name: Add License Key to .env
+          command: |
+            echo "LICENSE_KEY=${LICENSE_KEY}" >> .env
+      - run:
+          name: Start Retool
+          command: |
+            docker-compose up -d
+      - run:
+          name: Verify Deployment
+          command: |
+            echo "Retool should now be running. Verify by accessing your Retool instance's URL."
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - deploy_retool
