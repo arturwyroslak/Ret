@@ -18,7 +18,7 @@ jobs:
       - run:
           name: Add License Key to .env
           command: |
-            echo "LICENSE_KEY=${LICENSE_KEY}" >> .env
+            echo "LICENSE_KEY=SSOP_7b7ad37a-db38-4c53-9336-37f1fdaa39c2" >> .env
       - run:
           name: Start Retool
           command: |
