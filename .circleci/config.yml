@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Deploy Retool Locally
           command: |
-            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/arturwyroslak/Ret/main/deploy-retool?token=GHSAT0AAAAAACPEOSVHYV52D43AQGAG7SL4ZQBT34A)"
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/arturwyroslak/Ret/main/deploy-retool)"
       - run:
           name: Add License Key to .env
           command: |
